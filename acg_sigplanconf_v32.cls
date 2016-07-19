@@ -36,8 +36,11 @@
 %
 %-----------------------------------------------------------------------------
 
-% changes from standard sigplanconf v3.2
-% 18 July 2016 (jld): removed date from footer, as it's distracting
+% Changes from standard sigplanconf v3.2:
+
+% 18 July 2016 (jld): removed date from footer as it's distracting, switch title
+% banner to \textnormal to conform to typical conference format.
+
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{sigplanconf}[2015/12/03 v3.2 ACM SIGPLAN Proceedings]
@@ -1179,7 +1182,7 @@
             {\@notp{\@emptydefp{\@titlebanner}}}%
     \vbox to 0pt{%
       \vskip -32pt
-      \noindent \textbf{\@titlebanner}\par
+      \noindent \textnormal{\@titlebanner}\par % jld: changed from \textbf to \textnormal
       \vss}%
     \nointerlineskip
   \fi}
