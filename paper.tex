@@ -1,0 +1,95 @@
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[preprint,10pt,numbers]{acg_sigplanconf_v32}
+
+\usepackage{amsmath,amssymb}
+\usepackage{supertabular}
+\usepackage[table]{xcolor}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{subfloat}
+
+% hyperref
+\hypersetup{citecolor=blue,linkcolor=blue}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\subsubsectionautorefname{Section}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+
+% xcolor
+\definecolor{RowHighlight}{gray}{0.90}
+
+
+\newcommand{\TODO}[1]{\textbf{\textcolor{red}{[ TODO: #1]}}}
+\newcommand{\eg}{\emph{e.g.}\xspace}
+\newcommand{\ie}{\emph{i.e.}\xspace}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\Code}[1]{\textsf{#1}}
+
+\newcommand{\Name}{\textsc{TheScheme}\xspace}
+
+\begin{document}
+
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+%\conferenceinfo{CONF 'yy}{Month d--d, 20yy, City, ST, Country}
+%\copyrightyear{20yy}
+%\copyrightdata{978-1-nnnn-nnnn-n/yy/mm}
+%\copyrightdoi{nnnnnnn.nnnnnnn}
+
+% Uncomment the publication rights you want to use.
+%\publicationrights{transferred}
+%\publicationrights{licensed}     % this is the default
+%\publicationrights{author-pays}
+
+% ignored unless 'preprint' option specified
+\titlebanner{banner above paper title}
+
+\title{\Name: A Good Idea}
+
+\authorinfo{}
+           {}
+           {}
+
+\maketitle
+
+\begin{abstract}
+Fill in.
+\end{abstract}
+
+%\category{CR-number}{subcategory}{third-level}
+
+%\keywords
+%keyword1, keyword2
+
+\section{Introduction}
+
+Fill in.
+
+\bibliography{bib}
+
+\end{document}
