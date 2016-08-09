@@ -4,8 +4,7 @@ PAPER=paper
 .PHONY: $(PAPER).pdf clean over
 
 $(PAPER).pdf: $(PAPER).tex
-	latexmk -pdf -pdflatex="pdflatex -file-line-error" $(PAPER).tex | tee .log
-	-@grep -InE --color=always "LaTeX Warning:.*" .log
+	latexmk -pdf -pdflatex="pdflatex -file-line-error" $(PAPER).tex
 #	open $(PAPER).pdf
 
 clean:
