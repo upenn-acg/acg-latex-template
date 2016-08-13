@@ -49,7 +49,22 @@
 \newcommand{\etal}{\emph{et al.}\xspace}
 \newcommand{\Code}[1]{\textsf{#1}}
 
-\newcommand{\Name}{\textsc{TheScheme}\xspace}
+% Ensure the \Name macro looks ok inside captions (which are sans bold --
+% \textsf \textbf). By default sans bold doesn't support small-caps, so if \Name
+% is an acronym it will get lower-case letters which looks off. It's better to
+% use all-caps in that case. c/o
+% http://tex.stackexchange.com/questions/236635/how-to-determine-current-font-style
+\usepackage{pdftexcmds}
+\makeatletter
+\DeclareRobustCommand{\Name}{%
+  \ifnum\pdf@strcmp{\f@family}{\sfdefault}=\z@
+    THEScheme\xspace%
+  \else
+    \textsc{TheScheme}\xspace%
+  \fi
+}
+\makeatother
+
 
 \begin{document}
 
