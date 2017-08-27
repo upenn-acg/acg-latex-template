@@ -21,6 +21,8 @@ for l in open(args.paper[0], 'r'):
         # l gets added to out_lines below
         addedNohypenPackage = True
         pass
+    if l.count(r'\usepackage{flushend}') > 0:
+        continue
     if l.count(r'\input') > 0:
         continue
     if l.count(r'\end{abstract}') > 0:
