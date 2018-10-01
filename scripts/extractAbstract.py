@@ -12,6 +12,13 @@ parser.add_argument('paper', metavar="PAPER.tex", nargs=1,
 
 args = parser.parse_args()
 
+stringsToIgnore = [
+    "\usepackage[english]{babel}", # TODO: this should be a regex instead
+    "\usepackage[autostyle,english=american]{csquotes}", # TODO: this should be a regex instead
+    "\MakeOuterQuote{\"}",
+    "\usepackage{flushend}",
+    "\input"]
+
 addedNohypenPackage = False
 out_lines = []
 for l in open(args.paper[0], 'r'):
@@ -21,9 +28,8 @@ for l in open(args.paper[0], 'r'):
         # l gets added to out_lines below
         addedNohypenPackage = True
         pass
-    if l.count(r'\usepackage{flushend}') > 0:
-        continue
-    if l.count(r'\input') > 0:
+    ignoreLine = any([s for s in stringsToIgnore if l.count(s) > 0])
+    if ignoreLine:
         continue
     if l.count(r'\end{abstract}') > 0:
         out_lines.append(l)
@@ -32,6 +38,7 @@ for l in open(args.paper[0], 'r'):
     out_lines.append(l)
     pass
 
+out_lines.append( r'\maketitle' )
 out_lines.append( r'\end{document}' )
 
 # NB: using an output directory doesn't work because we need to copy the .cls
