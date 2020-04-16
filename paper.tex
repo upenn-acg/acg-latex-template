@@ -28,6 +28,11 @@
 \usepackage{multirow}
 \usepackage{subcaption}
 
+% for converting " into `` or '' automatically
+\usepackage[english]{babel}
+\usepackage[autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
 % hyperref
 \hypersetup{citecolor=blue,linkcolor=blue}
 \def\sectionautorefname{Section}
@@ -45,6 +50,9 @@
 \newcommand{\ie}{\emph{i.e.}\xspace}
 \newcommand{\etal}{\emph{et al.}\xspace}
 \newcommand{\Code}[1]{\textsf{#1}}
+
+% for inline comments, tagged by author
+\newcommand{\jld}[1]{\noindent{\textcolor{blue}{\bf \fbox{JD} {\it#1}}}}
 
 % Ensure the \Name macro looks ok inside captions (which are sans bold --
 % \textsf \textbf). By default sans bold doesn't support small-caps, so if \Name
