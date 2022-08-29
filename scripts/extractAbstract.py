@@ -13,11 +13,11 @@ parser.add_argument('paper', metavar="PAPER.tex", nargs=1,
 args = parser.parse_args()
 
 stringsToIgnore = [
-    "\usepackage[english]{babel}", # TODO: this should be a regex instead
-    "\usepackage[autostyle,english=american]{csquotes}", # TODO: this should be a regex instead
-    "\MakeOuterQuote{\"}",
-    "\usepackage{flushend}",
-    "\input"]
+    r"\usepackage[english]{babel}", # TODO: this should be a regex instead
+    r"\usepackage[autostyle,english=american]{csquotes}", # TODO: this should be a regex instead
+    r"\MakeOuterQuote{\"}",
+    r"\usepackage{flushend}",
+    r"\input"]
 
 addedNohypenPackage = False
 out_lines = []
@@ -61,6 +61,6 @@ abstractTex.close()
 # compile abstract to pdf
 subprocess.check_call("latexmk -pdf "+abstractFile, shell=True)
 
-print
-print "Abstract can be copy-pasted from", abstractFile.replace('.tex','.pdf')
+print()
+print("Abstract can be copy-pasted from", abstractFile.replace('.tex','.pdf'))
 
