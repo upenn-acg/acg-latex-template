@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os, sys, subprocess
+import os, re, sys, subprocess
 import argparse
 
 parser = argparse.ArgumentParser(description="Extracts the abstract from PAPER.tex and builds it into a PDF without hyphenation. Allows for easy copy-pasting when a plain text abstract is needed (e.g., HotCRP).")
@@ -13,11 +13,11 @@ parser.add_argument('paper', metavar="PAPER.tex", nargs=1,
 args = parser.parse_args()
 
 stringsToIgnore = [
-    r"\usepackage[english]{babel}", # TODO: this should be a regex instead
-    r"\usepackage[autostyle,english=american]{csquotes}", # TODO: this should be a regex instead
-    r"\MakeOuterQuote{\"}",
-    r"\usepackage{flushend}",
-    r"\input"]
+    r"^\\usepackage.*[{]babel[}]",
+    r"^\\usepackage.*[{]csquotes[}]",
+    r"^\\MakeOuterQuote{\"}",
+    r"^\\usepackage.*[{]flushend[}]",
+    r"^\\input"]
 
 addedNohypenPackage = False
 out_lines = []
@@ -28,7 +28,7 @@ for l in open(args.paper[0], 'r'):
         # l gets added to out_lines below
         addedNohypenPackage = True
         pass
-    ignoreLine = any([s for s in stringsToIgnore if l.count(s) > 0])
+    ignoreLine = any([s for s in stringsToIgnore if re.search(s,l) is not None])
     if ignoreLine:
         continue
     if l.count(r'\end{abstract}') > 0:
